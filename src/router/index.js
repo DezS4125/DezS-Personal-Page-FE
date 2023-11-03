@@ -1,5 +1,7 @@
 import { createWebHistory, createRouter } from 'vue-router';
 import ContactBook from '@/views/ContactBook.vue';
+// import GitHubProfile from '@/components/GitHubProfile.vue';
+
 const routes = [
     {
         path: '/',
@@ -22,6 +24,21 @@ const routes = [
         name: 'contact.create',
         component: () => import('@/views/ContactAdd.vue'),
         props: (route) => ({ contactId: route.params.id })
+    },
+    {
+        path: '/about',
+        name: 'about',
+        component: () => import('@/views/About.vue'),
+    },
+    {
+        path: '/github',
+        name: 'github',
+        component: () => import('@/views/GitHub.vue'),
+    },
+    {
+        path: '/blog',
+        name: 'blog',
+        component: () => import('@/views/Blog.vue'),
     },
     
 ];
