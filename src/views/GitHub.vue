@@ -31,7 +31,8 @@ export default {
         };
         },
     async mounted() {
-        axios.get('https://api.github.com/users/DezS4125')
+        const githubUsername='DezS4125';
+        axios.get(`https://api.github.com/users/${githubUsername}`)
             .then(response => {
             this.user = response.data;
             })
@@ -39,7 +40,7 @@ export default {
             console.log(error);
             });
         try {
-            const response = await axios.get('https://api.github.com/users/DezS4125/repos');
+            const response = await axios.get(`https://api.github.com/users/${githubUsername}/repos`);
             this.repos = response.data;
         } catch (error) {   
             console.error(error);
