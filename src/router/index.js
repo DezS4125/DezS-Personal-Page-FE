@@ -40,6 +40,11 @@ const routes = [
         name: 'blog',
         component: () => import('@/views/Blog.vue'),
     },
+    { 
+        path: '/:notFound(.*)',
+        name: 'NotFound',
+        component: () => import('@/views/NotFound.vue') 
+    },
     
 ];
 const router = createRouter({

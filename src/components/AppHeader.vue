@@ -1,5 +1,5 @@
 <template>
-	<nav class="navbar navbar-expand navbar-dark bg-dark">
+	<nav class="navbar navbar-expand navbar-dark bg-dark sticky">
 		<a
 			href="/"
 			class="navbar-brand"
@@ -21,3 +21,12 @@
 		</div>
 	</nav>
 </template>
+
+
+<style scoped>
+	.sticky {
+		position: sticky;
+		top: 0;
+		z-index: 100;
+	}
+</style>
