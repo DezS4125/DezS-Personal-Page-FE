@@ -1,53 +1,69 @@
+<script setup>
+import { ref, watchEffect } from 'vue';
+import contactsService from '@/services/contacts.service';
+import PostList from '@/components/PostList.vue';
+import TagList from '@/components/TagList.vue';
+
+const props = defineProps({
+    tagId: { type: String, required: false, default: null},
+});
+
+let posts = ref([]);
+let tags = ref([]);
+
+// onMounted(async () => {
+//     try {
+//         console.log(props.tagId);
+//         if(props.tagId==null){
+//             posts.value = await contactsService.getAllPost();
+//         }
+//         else{
+//             posts.value = await contactsService.getPostByTag(props.tagId);
+//         }
+//         tags.value = await contactsService.getAllTags();
+//     } catch (error) {
+//         console.log(error);
+//     }
+// });
+watchEffect(async () => {
+    try {
+        console.log(props.tagId);
+        if(props.tagId==null){
+            posts.value = await contactsService.getAllPost();
+        }
+        else{
+            posts.value = await contactsService.getPostByTag(props.tagId);
+        }
+        tags.value = await contactsService.getAllTags();
+    } catch (error) {
+        console.log(error);
+    }
+});
+</script>
+
 <template>
     <!-- HTML goes here -->
 	<div class="row" style="background-color:black;">
 		<div class="col-sm-2" >Left pane</div>
 		<div class="col-sm-6">
+            Tag: {{ tagId }}
             <button>New post</button>
             <div class="blog">
-                <div v-for="item in items" :key="item.id">
-                    <Post :post="item" />
-                </div>
+                <PostList :posts="posts" />
             </div>
         </div>
 		<div class="col-sm-3" >
             <div class="tag sticky">
-                <div v-for="tag in tags" :key="tag.tag_id">
-                    <TagList :tag="tag"/>
-                </div>
+                <!-- <strong>Check out the tags:</strong> -->
+                <TagList :tags="tags"/>
             </div>
         </div>
 		<div class="col-sm-1" >Right pane</div>
 	</div>
 </template>
 
-<script>
-import contactsService from '@/services/contacts.service';
-import Post from '@/components/Post.vue';
-import TagList from '@/components/TagList.vue';
-export default {
-    // JavaScript goes here
-    data() {
-        return {
-            items: [],
-            tags: []
-        }
-    },
-    async created() {
-        try {
-            this.items = await contactsService.getAllPost();
-            this.tags = await contactsService.getAllTags();
-            // console.log(this.items)
-        } catch (error) {
-            console.log(error);
-        }
-    },
-    components: {
-        Post,
-        TagList
-    },
-}
-</script>
+<!-- rest of your code -->
+
 
 <style scoped>
     /* CSS goes here */
@@ -74,6 +90,7 @@ export default {
         display: flex;
         flex-direction: column;
         width: 15%;
+        border-radius: 4%;
     }
 
 	.sticky {

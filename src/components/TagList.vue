@@ -1,15 +1,18 @@
 <script setup>
 defineProps({
-	tag: { type: Object, required: true },
+	tags: { type: Array, required: true },
 });
 </script>
 <template>
-    <div class="p-1">
-        <strong>t/{{ tag.tag_name }}</strong>
-    </div>
+
+	<div v-for="tag in tags" :key="tag.tag_id">
+		<div class="p-1">
+			<router-link :to="`/blog/t/${tag.tag_id}`" class="nav-link">t/{{ tag.tag_name }}</router-link>
+		</div>
+	</div>
 </template>
 
-<style scoped>
+<style scoped>	
 	/* .sticky {
 		position: sticky;
 		top: 30mm;

@@ -32,9 +32,10 @@ function makeContactsService() {
 	// 	}).then((res) => res.json());
 	// }
 
-	// async function getContact(id) {
-	// 	return await fetch(`${baseUrl}/${id}`).then((res) => res.json());
-	// }
+	async function getPostByTag(tag) {
+		return await fetch(`${baseUrl}/blog/t/${tag}`)
+		.then((res) => res.json());
+	}
 
 	// async function updateContact(id, contact) {
 	// 	return await fetch(`${baseUrl}/${id}`, {
@@ -59,6 +60,7 @@ function makeContactsService() {
 		// deleteContact,
 		getAllPost,
 		getAllTags,
+		getPostByTag,
 	};
 }
 
