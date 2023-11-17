@@ -23,6 +23,7 @@ const downvote = async (post) => {
                 <strong style="font-size: x-large;">{{ post.post_title }}</strong>
             </div>
             <div class="p-1">
+                <!-- broken if the query doesn't connect to tag table -->
                 <strong>Tag:<router-link :to="`/blog/t/${post.tag_id}`" class="nav-link" style="display: inline-block; color: white;">{{ post.tag_name }}</router-link></strong>
             </div>
             <div class="p-1">

@@ -1,8 +1,8 @@
 function makeContactsService() {
 	const baseUrl = '/api/contacts';
-	// const headers = {
-	// 	'Content-Type': 'application/json',
-	// };
+	const headers = {
+		'Content-Type': 'application/json',
+	};
 
 	// async function getContacts(page, limit = 5) {
 	// 	let url = `${baseUrl}?page=${page}&limit=${limit}`;
@@ -54,6 +54,13 @@ function makeContactsService() {
 		})
 		// .then((res) => res.json());
 	}
+	async function createPost(post) {
+		return await fetch(`${baseUrl}/blog`, {
+			method: 'POST',
+			headers,
+			body: JSON.stringify(post),
+		}).then((res) => res.json());
+	}
 	// async function updateContact(id, contact) {
 	// 	return await fetch(`${baseUrl}/${id}`, {
 	// 		method: 'PUT',
@@ -80,7 +87,8 @@ function makeContactsService() {
 		getPostByTag,
 		searchPost,
 		upvote,
-		downvote
+		downvote,
+		createPost
 	};
 }
 

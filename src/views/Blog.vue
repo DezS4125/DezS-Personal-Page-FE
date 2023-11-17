@@ -37,7 +37,7 @@ watchEffect(async () => {
 		<div class="col-sm-2" >Left pane</div>
 		<div class="col-sm-6">
             Tag: {{ tagId }}
-            <button>New post</button>
+            <button class="btn btn-outline-secondary" type="button" @click="this.$router.push(`/blog/createPost`);">New post</button>
             <div class="blog">
                 <PostList :posts="posts" />
             </div>

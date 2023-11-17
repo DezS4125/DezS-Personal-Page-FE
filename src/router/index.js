@@ -52,6 +52,11 @@ const routes = [
         component: () => import('@/views/Blog.vue'),
         props: (route) => ({ searchString: route.params.searchString })
     },
+    {
+        path: '/blog/createPost',
+        name: 'post.create',
+        component: () => import('@/views/CreatePost.vue'),
+    },
     { 
         path: '/:notFound(.*)',
         name: 'NotFound',
