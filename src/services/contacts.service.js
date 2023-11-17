@@ -36,7 +36,24 @@ function makeContactsService() {
 		return await fetch(`${baseUrl}/blog/t/${tag}`)
 		.then((res) => res.json());
 	}
-
+	async function searchPost(searchString) {
+		return await fetch(`${baseUrl}/blog/${searchString}`, {
+			method: 'POST',
+		})
+		.then((res) => res.json());
+	}
+	async function upvote(postId) {
+		return await fetch(`${baseUrl}/blog/upvote/${postId}`, {
+			method: 'POST',
+		})
+		// .then((res) => res.json());
+	}
+	async function downvote(postId) {
+		return await fetch(`${baseUrl}/blog/downvote/${postId}`, {
+			method: 'POST',
+		})
+		// .then((res) => res.json());
+	}
 	// async function updateContact(id, contact) {
 	// 	return await fetch(`${baseUrl}/${id}`, {
 	// 		method: 'PUT',
@@ -61,6 +78,9 @@ function makeContactsService() {
 		getAllPost,
 		getAllTags,
 		getPostByTag,
+		searchPost,
+		upvote,
+		downvote
 	};
 }
 

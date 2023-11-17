@@ -6,33 +6,23 @@ import TagList from '@/components/TagList.vue';
 
 const props = defineProps({
     tagId: { type: String, required: false, default: null},
+    searchString: { type: String, required: false, default: null},
 });
 
 let posts = ref([]);
 let tags = ref([]);
 
-// onMounted(async () => {
-//     try {
-//         console.log(props.tagId);
-//         if(props.tagId==null){
-//             posts.value = await contactsService.getAllPost();
-//         }
-//         else{
-//             posts.value = await contactsService.getPostByTag(props.tagId);
-//         }
-//         tags.value = await contactsService.getAllTags();
-//     } catch (error) {
-//         console.log(error);
-//     }
-// });
 watchEffect(async () => {
     try {
         console.log(props.tagId);
-        if(props.tagId==null){
+        if(props.tagId==null & props.searchString==null){
             posts.value = await contactsService.getAllPost();
         }
-        else{
+        if(props.tagId!=null){
             posts.value = await contactsService.getPostByTag(props.tagId);
+        }
+        if(props.searchString!=null){
+            posts.value = await contactsService.searchPost(props.searchString);
         }
         tags.value = await contactsService.getAllTags();
     } catch (error) {
@@ -83,6 +73,8 @@ watchEffect(async () => {
         display: flex;
         flex-direction: column;
         margin-right: 2%;
+		min-height: 100vh;
+		overflow: auto;
     }
     .tag {
         background-color: #1A1A1B;

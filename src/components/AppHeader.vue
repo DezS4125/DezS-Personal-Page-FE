@@ -18,10 +18,30 @@
 			<li>
 				<router-link to="/blog" class="nav-link">Blog</router-link>
 			</li>
+			<input type="text" class="form-control" placeholder="Search" v-model="searchText">
+			<div class="input-group-append">
+				<button class="btn btn-outline-secondary" type="button" @click="search">Search</button>
+			</div>
 		</div>
 	</nav>
 </template>
 
+<script>
+export default {
+	data() {
+		return {
+		searchText: ''
+		}
+	},
+	methods: {
+		search() {
+			let encodedSearchText = encodeURIComponent(this.searchText);
+			this.$router.push(`/blog/${encodedSearchText}`);
+		}
+
+	}
+}
+</script>
 
 <style scoped>
 	.sticky {
