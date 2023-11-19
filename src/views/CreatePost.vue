@@ -1,23 +1,12 @@
 <template>
+    <h1>Create a new post!</h1>
     <form @submit.prevent="submitForm">
-        <table>
-            <tr>
-                <td>Post Title:</td>
-                <td><input type="text" v-model="postTitle" required placeholder="Post title"></td>
-            </tr>
-            <tr>
-                <td>Post Content:</td>
-                <td><textarea v-model="postContent" required placeholder="Post Content"></textarea></td>
-            </tr>
-            <tr>
-                <td>Tag:</td>
-                <td>
-                    <select v-model="tagId" required>
-                        <option v-for="tag in tags" :key="tag.tag_id" :value="tag.tag_id" required >{{ tag.tag_name }}</option>
-                    </select>
-                </td>
-            </tr>
-        </table>
+        <input type="text" v-model="postTitle" required placeholder="Post title"><br>
+        <textarea v-model="postContent" required placeholder="Post Content"></textarea> <br>
+        Tag:
+        <select v-model="tagId" required>
+            <option v-for="tag in tags" :key="tag.tag_id" :value="tag.tag_id" required >{{ tag.tag_name }}</option>
+        </select>
         <button type="submit">Submit</button>
     </form>
 </template>
