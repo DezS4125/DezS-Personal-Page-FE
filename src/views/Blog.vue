@@ -32,9 +32,8 @@ watchEffect(async () => {
 </script>
 
 <template>
-    <!-- HTML goes here -->
 	<div class="row" style="background-color:black;">
-		<div class="col-sm-2" >Left pane</div>
+		<div class="col-sm-2" ></div>
 		<div class="col-sm-6">
             Tag: {{ tagId }}
             <button class="btn btn-outline-secondary" type="button" @click="this.$router.push(`/blog/createPost`);">New post</button>
@@ -48,15 +47,12 @@ watchEffect(async () => {
                 <TagList :tags="tags"/>
             </div>
         </div>
-		<div class="col-sm-1" >Right pane</div>
+		<div class="col-sm-1" ></div>
 	</div>
 </template>
 
-<!-- rest of your code -->
-
 
 <style scoped>
-    /* CSS goes here */
     .container {
         display: flex;
         justify-content: space-between;

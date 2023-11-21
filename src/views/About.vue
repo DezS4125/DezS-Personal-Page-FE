@@ -14,13 +14,3 @@
     <h2>Why am I writing this website?</h2>
     <p>I wanted to create a personal website solely about me, so here it is.</p>
 </template>
-
-<script>
-export default {
-    // JavaScript goes here
-}
-</script>
-
-<style scoped>
-    /* CSS goes here */
-</style>

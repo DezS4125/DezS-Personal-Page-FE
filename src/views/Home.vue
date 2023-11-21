@@ -6,7 +6,3 @@ import HomeIntroduction from '@/components/HomeIntroduction.vue';
 </template>
 
 
-
-<style scoped>
-    /* CSS goes here */
-</style>

@@ -1,11 +1,19 @@
 <script setup>
 import contactsService from '@/services/contacts.service';
+// // import { useQueryClient, useQuery, useMutation } from '@tanstack/vue-query';
+// // >
+// // import { useQuery } from '@tanstack/vue-query'
+
+// // Use the useQuery hook
+// const { data: posts, isLoading, isError, error } = useQuery('posts', getAllPost)
+
+// const queryClient = useQueryClient();
 
 defineProps({
 	posts: { type: Array, required: true },
 });
 const upvote = async (post) => {
-    post.upvote++;
+    post.upvote++;      
     await contactsService.upvote(post.post_id);
 };
 

@@ -4,6 +4,9 @@ import '@fortawesome/fontawesome-free/css/all.min.css';
 import App from './App.vue';
 import router from './router';
 
-createApp(App)
-    .use(router)
-    .mount('#app');
+import { VueQueryPlugin } from "@tanstack/vue-query";
+
+const app=createApp(App)
+app.use(VueQueryPlugin)
+app.use(router)
+app.mount('#app');
